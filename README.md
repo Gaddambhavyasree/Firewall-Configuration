@@ -20,12 +20,8 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 ```
 
-```
-Default incoming policy changed to 'deny'
-(be sure to update your rules accordingly)
-Default outgoing policy changed to 'allow'
-(be sure to update your rules accordingly)
-```
+<img width="472" height="205" alt="Screenshot 2026-07-26 220820" src="https://github.com/user-attachments/assets/8612b9c1-471c-463c-ac5f-23b0dc687581" />
+
 
 ## 3. Allow Specific Services
 
@@ -37,12 +33,7 @@ sudo ufw allow 80/tcp       # HTTP
 sudo ufw allow 443/tcp      # HTTPS
 ```
 
-Each command adds both an IPv4 and IPv6 rule:
-
-```
-Rule added
-Rule added (v6)
-```
+<img width="358" height="303" alt="Screenshot 2026-07-26 220833" src="https://github.com/user-attachments/assets/287525e3-0f41-422c-8a2e-11a131ce489a" />
 
 ## 4. Restrict Access to a Specific Subnet
 
@@ -52,9 +43,8 @@ If you only want certain hosts (e.g. your local network) reaching the box, allow
 sudo ufw allow from 192.168.1.0/24
 ```
 
-```
-Rule added
-```
+<img width="425" height="77" alt="Screenshot 2026-07-26 220841" src="https://github.com/user-attachments/assets/8f210f7f-9979-4c92-bfdf-440ed4ca6dc7" />
+
 
 ## 5. Enable the Firewall
 
@@ -62,44 +52,14 @@ Rule added
 sudo ufw enable
 ```
 
-```
-Firewall is active and enabled on system startup
-```
-
 ## 6. Check Status
-
-Basic status:
-
-```bash
-sudo ufw status
-```
-
-```
-Status: active
-```
-
-Verbose status (shows defaults and every rule):
 
 ```bash
 sudo ufw status verbose
 ```
 
-```
-Status: active
-Logging: on (low)
-Default: deny (incoming), allow (outgoing), deny (routed)
-New profiles: skip
+<img width="616" height="355" alt="Screenshot 2026-07-26 220849" src="https://github.com/user-attachments/assets/820f4a1c-6ccf-4111-97b3-b00d1b4b6b37" />
 
-To                         Action      From
---                         ------      ----
-22/tcp                     ALLOW IN    Anywhere
-80/tcp                     ALLOW IN    Anywhere
-443/tcp                    ALLOW IN    Anywhere
-Anywhere                   ALLOW IN    192.168.1.0/24
-22/tcp (v6)                ALLOW IN    Anywhere (v6)
-80/tcp (v6)                ALLOW IN    Anywhere (v6)
-443/tcp (v6)                ALLOW IN    Anywhere (v6)
-```
 
 ## 7. Deleting a Rule
 
@@ -116,20 +76,8 @@ Rule deleted (v6)
 
 After deletion, `sudo ufw status verbose` reflects the updated rule set:
 
-```
-Status: active
-Logging: on (low)
-Default: deny (incoming), allow (outgoing), deny (routed)
-New profiles: skip
+<img width="636" height="411" alt="Screenshot 2026-07-26 220857" src="https://github.com/user-attachments/assets/5b0a7b28-de4d-4709-86b3-65061d7a8c1d" />
 
-To                         Action      From
---                         ------      ----
-22/tcp                     ALLOW IN    Anywhere
-443/tcp                    ALLOW IN    Anywhere
-Anywhere                   ALLOW IN    192.168.1.0/24
-22/tcp (v6)                ALLOW IN    Anywhere (v6)
-443/tcp (v6)                ALLOW IN    Anywhere (v6)
-```
 
 ## Full Command Reference
 
